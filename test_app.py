@@ -34,7 +34,7 @@ class TestApp(unittest.TestCase):
         self.assertIn(expected_page_text, result_page_text)
 
     def test_froyo_results(self):
-        res = app.test_client().get('/froyo_results?flavor=vanilla&toppings=strawberries')
+        res = app.test_client().get('/froyo_results?flavor=vanilla&topping=strawberries')
         self.assertEqual(res.status_code, 200)
 
         result_page_text = res.get_data(as_text=True)
@@ -79,7 +79,7 @@ class TestApp(unittest.TestCase):
         self.assertEqual(res.status_code, 200)
 
         result_page_text = res.get_data(as_text=True)
-        self.assertIn('add 6 and 7', result_page_text)
+        self.assertIn('add 6 + 7', result_page_text)
         self.assertIn('result is: 13', result_page_text)
 
     def test_calculator_subtract(self):
@@ -87,7 +87,7 @@ class TestApp(unittest.TestCase):
         self.assertEqual(res.status_code, 200)
 
         result_page_text = res.get_data(as_text=True)
-        self.assertIn('subtract 6 and 7', result_page_text)
+        self.assertIn('subtract 6 - 7', result_page_text)
         self.assertIn('result is: -1', result_page_text)
 
     def test_calculator_multiply(self):
@@ -95,7 +95,7 @@ class TestApp(unittest.TestCase):
         self.assertEqual(res.status_code, 200)
 
         result_page_text = res.get_data(as_text=True)
-        self.assertIn('multiply 6 and 7', result_page_text)
+        self.assertIn('multiply 6 * 7', result_page_text)
         self.assertIn('result is: 42', result_page_text)
 
     def test_calculator_divide(self):
@@ -103,7 +103,7 @@ class TestApp(unittest.TestCase):
         self.assertEqual(res.status_code, 200)
 
         result_page_text = res.get_data(as_text=True)
-        self.assertIn('divide 6 and 3', result_page_text)
+        self.assertIn('divide 6 / 3', result_page_text)
         self.assertIn('result is: 2', result_page_text)
 
     def test_horoscope_aries(self):
@@ -114,7 +114,7 @@ class TestApp(unittest.TestCase):
 
         result_page_text = res.get_data(as_text=True)
         self.assertIn('Ducky', result_page_text)
-        self.assertIn('aries', result_page_text)
+        self.assertIn('Aries', result_page_text)
         self.assertIn('Adventurous and energetic', result_page_text)
         self.assertIn('18', result_page_text)
 
